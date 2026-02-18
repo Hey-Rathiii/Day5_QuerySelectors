@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Highlight Student</title>
+
+    <style>
+        .student {
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="student">Amit</div>
+    <div class="student rahul">Rahul</div>
+    <div class="student">Sneha</div>
+
+    <button onclick="highlightRahul()">Highlight Rahul</button>
+
+    <script>
+
+        function highlightRahul()
+        {
+            document.querySelector(".rahul").style.background = "yellow";
+        }
+
+    </script>
+
+</body>
+</html>

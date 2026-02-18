@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Message Wall</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 25px; }
+        .row { margin: 10px 0; }
+        input, textarea { width: 320px; padding: 10px; font-size: 16px; }
+        textarea { height: 80px; resize: none; }
+        button { padding: 10px 14px; margin-right: 8px; cursor: pointer; }
+        .card {
+          border: 1px solid #ccc;
+          padding: 12px;
+          margin: 10px 0;
+          border-radius: 8px;
+        }
+        .name { font-weight: bold; }
+        .time { font-size: 12px; opacity: 0.7; }
+        .highlight { border: 2px solid orange; }
+    </style>
+</head>
+
+<body>
+
+    <h2 class="title">Student Message Wall</h2>
+    <p class="subtitle">Post a message and see instant DOM changes 😄</p>
+
+    <div class="row">
+        <input id="studentName" type="text" placeholder="Enter your name" />
+    </div>
+
+    <div class="row">
+<textarea id="studentMsg" placeholder="Type your message..."></textarea>
+        <div>Characters: <span id="charCount">0</span></div>
+    </div>
+
+    <div class="row">
+        <button id="postBtn">Post Message</button>
+        <button id="darkBtn">Dark Mode</button>
+        <button id="highlightBtn">Highlight All Posts</button>
+        <button id="clearBtn">Clear All</button>
+    </div>
+
+    <hr />
+
+    <h3>📌 Posts</h3>
+    <div id="posts"></div>
+</body>
+
+<script>
+
+    const nameInput = document.querySelector("#studentName");
+    const msgInput = document.querySelector("#studentMsg");
+    const charCount = document.querySelector("#charCount");
+    const postsDiv = document.querySelector("#posts");
+
+    const postBtn = document.querySelector("#postBtn");
+    const darkBtn = document.querySelector("#darkBtn");
+    const highlightBtn = document.querySelector("#highlightBtn");
+    const clearBtn = document.querySelector("#clearBtn");
+
+    msgInput.addEventListener("input", function()  {
+        charCount.innerText = this.value.length;
+	});
+
+    postBtn.addEventListener("click", function() {
+        const name = nameInput.value.trim();
+        const msg = msgInput.value.trim();
+
+        if (!name || !msg) {
+            alert("Please enter both Name and Message.");
+            return;
+        }
+
+        const card = document.createElement("div");
+        card.className = "card post";
+
+        const now = new Date().toLocaleTimeString();
+
+        card.innerHTML = `
+          <div class="name">${name}</div>
+            <div class="time">${now}</div>
+        <div class="text">${msg}</div>
+        <button> class ="deleteBtn">Delete</button>
+        `;
+
+        postsDiv.prepend(card);
+
+        nameInput.value = "";
+        msgInput.value = "";
+        charCount.innerText = "0";
+
+        card.querySelector(".deleteBtn").addEventListener("click", function () {
+            card.remove();
+        });
+    });
+</script>
