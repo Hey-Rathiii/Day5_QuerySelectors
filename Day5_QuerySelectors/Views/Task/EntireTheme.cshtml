@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<body>
+
+    <p>Hello</p>
+    <p>Welcome</p>
+    <p>JavaScript</p>
+
+    <button onclick="dark()">Dark Theme</button>
+
+    <script>
+
+        function dark()
+        {
+         try{
+            document.body.style.background="black";
+
+            let all = document.querySelectorAll("p");
+
+            for(let i=0;i<all.length;i++)
+            {
+              all[i].style.color="white";
+            }
+         }
+         catch(err){
+            alert("Error");
+         }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<body>
+
+    <input id="search" placeholder="Search" oninput="filter()">
+
+    <ul>
+        <li>Rahul</li>
+        <li>Amit</li>
+        <li>Neha</li>
+        <li>Pooja</li>
+        <li>Rohan</li>
+    </ul>
+
+    <script>
+
+        function filter()
+        {
+         try{
+            let val = search.value.toLowerCase();
+            let names = document.querySelectorAll("li");
+
+            for(let i=0;i<names.length;i++)
+            {
+              if(names[i].innerText.toLowerCase().includes(val))
+                names[i].style.display="block";
+              else
+                names[i].style.display="none";
+            }
+         }
+         catch(e){
+            alert("Error");
+         }
+        }
+
+    </script>
+
+</body>
+</html>

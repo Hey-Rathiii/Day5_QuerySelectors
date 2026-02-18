@@ -22,6 +22,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Task}/{action=Highlight}/{id?}");
+    pattern: "{controller=Task}/{action=Prepend}/{id?}");
 
 app.Run();
